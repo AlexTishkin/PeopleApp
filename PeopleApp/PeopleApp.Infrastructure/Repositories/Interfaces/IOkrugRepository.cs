@@ -2,5 +2,5 @@
 
 namespace PeopleApp.Infrastructure
 {
-    public interface IAuthorRepository : IRepository<Author> {}
+    public interface IOkrugRepository : IRepository<Okrug> {}
 }

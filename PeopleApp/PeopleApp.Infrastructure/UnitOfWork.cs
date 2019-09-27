@@ -7,29 +7,29 @@ namespace PeopleApp.Infrastructure
     {
         readonly ApplicationDbContext _context;
 
-        private IAuthorRepository _authors;
-        private IBookRepository _books;
+        private IOkrugRepository _okrugs;
+        private IRegionRepository _regions;
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public IAuthorRepository Authors
+        public IOkrugRepository Okrugs
         {
             get
             {
-                if (_authors == null) _authors = new AuthorRepository(_context);
-                return _authors;
+                if (_okrugs == null) _okrugs = new OkrugRepository(_context);
+                return _okrugs;
             }
         }
 
-        public IBookRepository Books
+        public IRegionRepository Regions
         {
             get
             {
-                if (_books == null) _books = new BookRepository(_context);
-                return _books;
+                if (_regions == null) _regions = new RegionRepository(_context);
+                return _regions;
             }
         }
 

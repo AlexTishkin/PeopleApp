@@ -38,8 +38,8 @@ namespace PeopleApp.Infrastructure
         {
             _context.Roles.RemoveRange(_context.Roles.ToList());
             _context.Users.RemoveRange(_context.Users.ToList());
-            _context.Books.RemoveRange(_context.Books.ToList());
-            _context.Authors.RemoveRange(_context.Authors.ToList());
+            _context.Okrugs.RemoveRange(_context.Okrugs.ToList());
+            _context.Regions.RemoveRange(_context.Regions.ToList());
             _context.SaveChanges();
         }
 
@@ -60,19 +60,29 @@ namespace PeopleApp.Infrastructure
 
         private void AddTestData()
         {
-            if (_context.Books.Any()) return;
+            if (_context.Okrugs.Any()) return;
 
-            var b1 = new Book {Id = Guid.NewGuid(), Name = "Книга 1"};
-            var b2 = new Book {Id = Guid.NewGuid(), Name = "Книга 2"};
-            var b3 = new Book {Id = Guid.NewGuid(), Name = "Книга 3"};
+            var r1 = new Region {Id = Guid.NewGuid(), Name = "Орловская область"};
+            var r2 = new Region {Id = Guid.NewGuid(), Name = "Воронежская область"};
 
-            var a1 = new Author() {Id = Guid.NewGuid(), Name = "Автор 1"};
-            a1.Books = new List<Book> {b1, b2};
+            var r3 = new Region {Id = Guid.NewGuid(), Name = "Ленинградская область"};
+            var r4 = new Region {Id = Guid.NewGuid(), Name = "Мурманская область"};
 
-            var a2 = new Author() {Id = Guid.NewGuid(), Name = "Автор 2"};
-            a2.Books = new List<Book> {b3};
+            var o1 = new Okrug
+            {
+                Id = Guid.NewGuid(),
+                Name = "Центральный федеральный округ",
+                Regions = new List<Region> {r1, r2}
+            };
 
-            _context.Authors.AddRange(a1, a2);
+            var o2 = new Okrug
+            {
+                Id = Guid.NewGuid(),
+                Name = "Северо-Западный федеральный округ",
+                Regions = new List<Region> {r3, r4}
+            };
+
+            _context.Okrugs.AddRange(o1, o2);
 
             _context.SaveChanges();
         }

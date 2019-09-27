@@ -7,8 +7,8 @@ namespace PeopleApp.Core.Dto
     {
         public AutoMapperProfile()
         {
-            CreateMap<Author, AuthorDto>().ReverseMap();
-            CreateMap<Book, BookDto>().ReverseMap();
+            CreateMap<Okrug, OkrugDto>().ReverseMap();
+            CreateMap<Region, RegionDto>().ReverseMap();
         }
     }
 }

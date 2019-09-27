@@ -3,10 +3,10 @@ using PeopleApp.Core.Entity;
 
 namespace PeopleApp.Infrastructure.Repositories
 {
-    public class BookRepository : Repository<Book>, IBookRepository
+    public class RegionRepository : Repository<Region>, IRegionRepository
     {
         private ApplicationDbContext _appContext => (ApplicationDbContext) _context;
 
-        public BookRepository(DbContext context) : base(context) {}
+        public RegionRepository(DbContext context) : base(context) {}
     }
 }

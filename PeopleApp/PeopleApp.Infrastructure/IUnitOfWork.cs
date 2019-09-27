@@ -2,8 +2,8 @@
 {
     public interface IUnitOfWork
     {
-        IAuthorRepository Authors { get; }
-        IBookRepository Books { get; }
+        IOkrugRepository Okrugs { get; }
+        IRegionRepository Regions { get; }
         int SaveChanges();
     }
 }

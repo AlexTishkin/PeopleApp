@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PeopleApp.Core.Entity
 {
-    public class Book
+    public class Okrug
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-
-        public Author Author { get; set; }
-        public Guid AuthorId { get; set; }
+        public virtual IList<Region> Regions { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace PeopleApp.Infrastructure
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Book> Books { get; set; }
+        public DbSet<Okrug> Okrugs { get; set; }
+        public DbSet<Region> Regions { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

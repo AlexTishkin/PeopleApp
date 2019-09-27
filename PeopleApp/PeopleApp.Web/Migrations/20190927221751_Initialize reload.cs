@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PeopleApp.Web.Migrations
 {
-    public partial class Initialize : Migration
+    public partial class Initializereload : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,7 @@ namespace PeopleApp.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Authors",
+                name: "Okrugs",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -60,7 +60,7 @@ namespace PeopleApp.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.Id);
+                    table.PrimaryKey("PK_Okrugs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,20 +170,20 @@ namespace PeopleApp.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Books",
+                name: "Regions",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    AuthorId = table.Column<Guid>(nullable: false)
+                    OkrugId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Books", x => x.Id);
+                    table.PrimaryKey("PK_Regions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Books_Authors_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Authors",
+                        name: "FK_Regions_Okrugs_OkrugId",
+                        column: x => x.OkrugId,
+                        principalTable: "Okrugs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -228,9 +228,9 @@ namespace PeopleApp.Web.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_AuthorId",
-                table: "Books",
-                column: "AuthorId");
+                name: "IX_Regions_OkrugId",
+                table: "Regions",
+                column: "OkrugId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -251,7 +251,7 @@ namespace PeopleApp.Web.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Regions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -260,7 +260,7 @@ namespace PeopleApp.Web.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Authors");
+                name: "Okrugs");
         }
     }
 }

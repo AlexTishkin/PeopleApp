@@ -10,56 +10,56 @@ namespace PeopleApp.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookController : ControllerBase
+    public class RegionController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
 
-        public BookController(IUnitOfWork uow)
+        public RegionController(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        // GET: api/Book
+        // GET: api/Region
         [Authorize]
         [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Get()
         {
-            var allBooks = _uow.Books.GetAll();
-            var bookVms = Mapper.Map<IEnumerable<BookDto>>(allBooks);
-            return Ok(bookVms);
+            var allRegions = _uow.Regions.GetAll();
+            var regionVms = Mapper.Map<IEnumerable<RegionDto>>(allRegions);
+            return Ok(regionVms);
         }
 
-        // GET: api/Book/1
+        // GET: api/Region/1
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var book = _uow.Books.Get(id);
-            return Ok(Mapper.Map<BookDto>(book));
+            var region = _uow.Regions.Get(id);
+            return Ok(Mapper.Map<RegionDto>(region));
         }
 
-        // POST: api/Book
+        // POST: api/Region
         [HttpPost]
-        public void Post([FromBody] BookDto book)
+        public void Post([FromBody] RegionDto region)
         {
-            _uow.Books.Add(Mapper.Map<Book>(book));
+            _uow.Regions.Add(Mapper.Map<Region>(region));
             _uow.SaveChanges();
         }
 
-        // PUT: api/Book/Update/1
+        // PUT: api/Region/Update/1
         [HttpPost("{action}/{id}")]
-        public void Update(int id, [FromBody] BookDto book)
+        public void Update(int id, [FromBody] RegionDto region)
         {
-            var t = _uow.Books.Get(id);
-            t.Name = book.Name;
+            var t = _uow.Regions.Get(id);
+            t.Name = region.Name;
             var result = _uow.SaveChanges();
         }
 
-        // DELETE: api/Book/Delete/1
+        // DELETE: api/Region/Delete/1
         [HttpPost("{action}/{id}")]
         public void Delete(int id)
         {
-            _uow.Books.Remove(_uow.Books.Get(id));
+            _uow.Regions.Remove(_uow.Regions.Get(id));
             _uow.SaveChanges();
         }
     }

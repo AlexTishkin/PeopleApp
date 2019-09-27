@@ -2,7 +2,7 @@
 
 namespace PeopleApp.Infrastructure
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IRegionRepository : IRepository<Region>
     {
     }
 }

@@ -10,8 +10,8 @@ using PeopleApp.Infrastructure;
 namespace PeopleApp.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190927173907_Initialize")]
-    partial class Initialize
+    [Migration("20190927221751_Initialize reload")]
+    partial class Initializereload
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -191,7 +191,7 @@ namespace PeopleApp.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("PeopleApp.Core.Entity.Author", b =>
+            modelBuilder.Entity("PeopleApp.Core.Entity.Okrug", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -200,23 +200,23 @@ namespace PeopleApp.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Okrugs");
                 });
 
-            modelBuilder.Entity("PeopleApp.Core.Entity.Book", b =>
+            modelBuilder.Entity("PeopleApp.Core.Entity.Region", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("AuthorId");
-
                     b.Property<string>("Name");
+
+                    b.Property<Guid>("OkrugId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("OkrugId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Regions");
                 });
 
             modelBuilder.Entity("PeopleApp.Core.Entity.ApplicationUser", b =>
@@ -277,11 +277,11 @@ namespace PeopleApp.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("PeopleApp.Core.Entity.Book", b =>
+            modelBuilder.Entity("PeopleApp.Core.Entity.Region", b =>
                 {
-                    b.HasOne("PeopleApp.Core.Entity.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId")
+                    b.HasOne("PeopleApp.Core.Entity.Okrug", "Okrug")
+                        .WithMany("Regions")
+                        .HasForeignKey("OkrugId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
