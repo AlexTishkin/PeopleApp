@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using PeopleApp.Core.Dto;
 using PeopleApp.Core.Entity;
 using PeopleApp.Infrastructure;
+using PeopleApp.Infrastructure.Services.Region;
 using PeopleApp.Web.Areas.Security.Options;
 
 namespace PeopleApp.Web
@@ -49,8 +50,12 @@ namespace PeopleApp.Web
             });
 
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
+            
             services.AddTransient<ISeedData, SeedData>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Services
+            services.AddTransient<IRegionService, RegionService>();
 
             var connection = Configuration["Data:MsSqlServerConnectionString"];
             services.AddDbContext<ApplicationDbContext>(options =>

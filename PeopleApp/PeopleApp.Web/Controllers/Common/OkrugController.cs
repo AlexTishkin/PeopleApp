@@ -6,7 +6,7 @@ using PeopleApp.Core.Entity;
 using PeopleApp.Infrastructure;
 using System.Collections.Generic;
 
-namespace PeopleApp.Web.Controllers
+namespace PeopleApp.Web.Controllers.Common
 {
     [Route("api/common/[controller]")]
     [ApiController]

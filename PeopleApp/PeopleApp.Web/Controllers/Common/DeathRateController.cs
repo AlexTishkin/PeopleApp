@@ -7,7 +7,7 @@ using PeopleApp.Infrastructure;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
-namespace PeopleApp.Web.Controllers
+namespace PeopleApp.Web.Controllers.Common
 {
     [Route("api/common/[controller]")]
     [ApiController]

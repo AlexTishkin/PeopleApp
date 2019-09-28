@@ -14,17 +14,20 @@ namespace PeopleApp.Infrastructure.Repositories
         {
         }
 
-        public override IEnumerable<Okrug> GetAll()
+        public override IEnumerable<Okrug> GetAll(bool eagerMode = false)
         {
-            return _entities
-                .Include(e => e.Regions)
-                .ToList();
+            return _entities.ToList();
         }
 
-        public override Okrug Get(Guid id)
+        public override Okrug Get(Guid id, bool eagerMode = false)
         {
             var okrug = _entities.Find(id);
-            _appContext.Entry(okrug).Collection(t => t.Regions).Load();
+
+            if (eagerMode)
+            {
+                _appContext.Entry(okrug).Collection(t => t.Regions).Load();
+            }
+
             return okrug;
         }
     }

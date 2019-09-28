@@ -65,12 +65,12 @@ namespace PeopleApp.Infrastructure.Repositories
             return _entities.SingleOrDefault(predicate);
         }
 
-        public virtual TEntity Get(Guid id)
+        public virtual TEntity Get(Guid id, bool eagerMode = false)
         {
             return _entities.Find(id);
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll(bool eagerMode = false)
         {
             return _entities.ToList();
         }

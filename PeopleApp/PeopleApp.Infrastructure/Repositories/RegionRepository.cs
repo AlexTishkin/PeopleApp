@@ -10,11 +10,16 @@ namespace PeopleApp.Infrastructure.Repositories
 
         public RegionRepository(DbContext context) : base(context) {}
 
-        public override Region Get(Guid id)
+        public override Region Get(Guid id, bool eagerMode = false)
         {
             var region = _entities.Find(id);
-            _appContext.Entry(region).Collection(t => t.BirthRates).Load();
-            _appContext.Entry(region).Collection(t => t.DeathRates).Load();
+
+            if (eagerMode)
+            {
+                _appContext.Entry(region).Collection(t => t.BirthRates).Load();
+                _appContext.Entry(region).Collection(t => t.DeathRates).Load();
+            }
+
             return region;
         }
     }
