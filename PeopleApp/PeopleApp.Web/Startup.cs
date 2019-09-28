@@ -16,6 +16,7 @@ using PeopleApp.Core.Dto;
 using PeopleApp.Core.Entity;
 using PeopleApp.Infrastructure;
 using PeopleApp.Infrastructure.Services.Region;
+using PeopleApp.Infrastructure.Services.VKBot;
 using PeopleApp.Web.Areas.Security.Options;
 using VkNet;
 using VkNet.Abstractions;
@@ -59,6 +60,7 @@ namespace PeopleApp.Web
 
             // Services
             services.AddTransient<IRegionService, RegionService>();
+            services.AddTransient<IVKService, VKService>();
 
             // VKBot
             services.AddSingleton<IVkApi>(sp => {

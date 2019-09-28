@@ -20,9 +20,9 @@ namespace PeopleApp.Web
                 var logger = services.GetRequiredService<ILogger<Program>>();
                 try
                 {
-                    logger.LogInformation("Seeding API database");
-                    var dbInitializer = services.GetRequiredService<ISeedData>();
-                    await dbInitializer.InitializeAsync();
+                    //logger.LogInformation("Seeding API database");
+                    //var dbInitializer = services.GetRequiredService<ISeedData>();
+                    //await dbInitializer.InitializeAsync();
                 }
                 catch (Exception ex)
                 {
