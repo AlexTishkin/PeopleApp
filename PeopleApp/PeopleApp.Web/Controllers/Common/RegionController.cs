@@ -21,9 +21,6 @@ namespace PeopleApp.Web.Controllers.Common
         }
 
         // GET: api/Region
-        // Authorization works! Example
-        //[Authorize]
-        //[Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Get()
         {

@@ -28,7 +28,7 @@ namespace PeopleApp.Web.Areas.Api.Controllers
 
         // GET: api/region?id=00000000-0000-0000-0000-000000000000&fields=birth&fields=death
         [Route("/api/region")]
-        [HttpGet()]
+        [HttpGet]
         public IActionResult GetRegion(Guid id, [FromQuery]string[] fields)
         {
             if (fields is null || fields.Length == 0) throw new ArgumentException();
