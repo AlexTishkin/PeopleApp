@@ -17,6 +17,9 @@ using PeopleApp.Core.Entity;
 using PeopleApp.Infrastructure;
 using PeopleApp.Infrastructure.Services.Region;
 using PeopleApp.Web.Areas.Security.Options;
+using VkNet;
+using VkNet.Abstractions;
+using VkNet.Model;
 
 namespace PeopleApp.Web
 {
@@ -56,6 +59,13 @@ namespace PeopleApp.Web
 
             // Services
             services.AddTransient<IRegionService, RegionService>();
+
+            // VKBot
+            services.AddSingleton<IVkApi>(sp => {
+                var api = new VkApi();
+                api.Authorize(new ApiAuthParams { AccessToken = Configuration["Config:AccessToken"] });
+                return api;
+            });
 
             var connection = Configuration["Data:MsSqlServerConnectionString"];
             services.AddDbContext<ApplicationDbContext>(options =>
