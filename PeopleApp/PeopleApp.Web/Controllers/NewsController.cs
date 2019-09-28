@@ -53,6 +53,8 @@ namespace PeopleApp.Web.Controllers
         {
             var t = _uow.NewsArticles.Get(id);
             t.Name = newsArticle.Name;
+            t.Text = newsArticle.Text;
+            t.Date = newsArticle.Date;
             var result = _uow.SaveChanges();
         }
 
