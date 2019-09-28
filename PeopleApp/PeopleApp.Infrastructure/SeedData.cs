@@ -68,6 +68,7 @@ namespace PeopleApp.Infrastructure
             {
                 Id = Guid.NewGuid(),
                 Name = "Орловская область",
+                Population = 786935,
                 BirthRates = new List<BirthRate>
                 {
                     new BirthRate {Id = Guid.NewGuid(), Year = 2000, Value = 15628},
@@ -84,6 +85,7 @@ namespace PeopleApp.Infrastructure
             {
                 Id = Guid.NewGuid(),
                 Name = "Воронежская область",
+                Population = 2335380,
                 BirthRates = new List<BirthRate>
                 {
                     new BirthRate {Id = Guid.NewGuid(), Year = 2000, Value = 18519},
@@ -96,8 +98,8 @@ namespace PeopleApp.Infrastructure
                 }
             };
 
-            var r3 = new Region {Id = Guid.NewGuid(), Name = "Ленинградская область"};
-            var r4 = new Region {Id = Guid.NewGuid(), Name = "Мурманская область"};
+            var r3 = new Region {Id = Guid.NewGuid(), Name = "Ленинградская область", Population = 1716868 };
+            var r4 = new Region {Id = Guid.NewGuid(), Name = "Мурманская область", Population = 795409 };
 
             var o1 = new Okrug
             {

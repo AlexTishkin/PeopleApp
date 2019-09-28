@@ -9,5 +9,6 @@ namespace PeopleApp.Infrastructure.Services.Region
     {
         IEnumerable<RegionTypeVm> GetRegions();
         List<Dictionary<string, int>> GetRegion(Guid id, string[] fields);
+        IEnumerable<RegionPopulationVm> GetPopulation();
     }
 }

@@ -7,7 +7,7 @@ namespace PeopleApp.Core.Entity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-
+        public int Population { get; set; }
         public Okrug Okrug { get; set; }
         public Guid OkrugId { get; set; }
 

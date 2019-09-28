@@ -65,5 +65,14 @@ namespace PeopleApp.Infrastructure.Services.Region
 
             return result;
         }
+
+        public IEnumerable<RegionPopulationVm> GetPopulation()
+        {
+            var regions = _uow.Regions.GetAll().ToList();
+            if (!regions.Any()) return new List<RegionPopulationVm>();
+            var result = regions.Select(r => new RegionPopulationVm(r.Id, r.Name, r.Population));
+            return result;
+        }
+
     }
 }

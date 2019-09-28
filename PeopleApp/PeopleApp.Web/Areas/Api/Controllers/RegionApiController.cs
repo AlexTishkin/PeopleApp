@@ -36,5 +36,14 @@ namespace PeopleApp.Web.Areas.Api.Controllers
             return Ok(result);
         }
 
+        // GET: api/population
+        [Route("/api/population")]
+        [HttpGet]
+        public IActionResult GetPopulation()
+        {
+            var result = _regionService.GetPopulation();
+            return Ok(result);
+        }
+
     }
 }
