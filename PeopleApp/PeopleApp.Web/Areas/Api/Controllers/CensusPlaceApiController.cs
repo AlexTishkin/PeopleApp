@@ -24,7 +24,7 @@ namespace PeopleApp.Web.Areas.Api.Controllers
         // GET: api/places
         [Route("/api/places")]
         [HttpGet]
-        public IActionResult GetRegions()
+        public IActionResult GetPlaces()
         {
             var items = _uow.CensusPlaces.GetAll();
             return Ok(Mapper.Map<IEnumerable<CensusPlaceDto>>(items));
