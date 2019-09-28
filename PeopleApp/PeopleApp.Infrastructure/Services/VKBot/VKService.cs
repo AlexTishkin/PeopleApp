@@ -6,7 +6,12 @@ namespace PeopleApp.Infrastructure.Services.VKBot
     {
         public string GetHandledMessage(string message)
         {
-            return message + $" ({Guid.NewGuid()})";
+            if (message.Equals("привет", StringComparison.OrdinalIgnoreCase))
+            {
+                return "Добрый день! :-)";
+            }
+
+            return $"Сам {message}!";
         }
     }
 }
