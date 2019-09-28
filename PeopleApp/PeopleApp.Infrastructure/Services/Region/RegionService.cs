@@ -33,5 +33,37 @@ namespace PeopleApp.Infrastructure.Services.Region
 
             return allRegions;
         }
+
+        public List<Dictionary<string, int>> GetRegion(Guid id, string[] fields)
+        {
+            if (fields is null || fields.Length == 0) throw new ArgumentException();
+
+            var region = _uow.Regions.Get(id, true);
+            var years = region.BirthRates.Select(b => b.Year).ToList();
+
+            var result = new List<Dictionary<string, int>>();
+
+            foreach(var year in years)
+            {
+                var item = new Dictionary<string, int>();
+                item["year"] = year;
+
+                if (fields.Contains("birth"))
+                {
+                    var birthCount = region.BirthRates.First(b => b.Year == year).Value;
+                    item["birth"] = birthCount;
+                }
+
+                if (fields.Contains("death"))
+                {
+                    var deathCount = region.DeathRates.First(b => b.Year == year).Value;
+                    item["death"] = deathCount;
+                }
+
+                result.Add(item);
+            }
+
+            return result;
+        }
     }
 }

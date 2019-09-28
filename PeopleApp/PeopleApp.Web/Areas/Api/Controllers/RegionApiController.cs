@@ -26,14 +26,14 @@ namespace PeopleApp.Web.Areas.Api.Controllers
             return Ok(regions);
         }
 
-        // GET: api/region?id=xxxx-xxxx-xxxxxxxx-xxxx&tableType=(1|2)
-        [Route("api/region")]
-        [HttpGet]
-        public IActionResult GetRegion(Guid id, string tableType)
+        // GET: api/region?id=00000000-0000-0000-0000-000000000000&fields=birth&fields=death
+        [Route("/api/region")]
+        [HttpGet()]
+        public IActionResult GetRegion(Guid id, [FromQuery]string[] fields)
         {
-            return null;
-            //var region = _uow.Regions.Get(id);
-            //return Ok(Mapper.Map<RegionDto>(region));
+            if (fields is null || fields.Length == 0) throw new ArgumentException();
+            var result = _regionService.GetRegion(id, fields);
+            return Ok(result);
         }
 
     }
