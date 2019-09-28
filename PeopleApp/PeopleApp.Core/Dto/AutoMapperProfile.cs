@@ -9,6 +9,9 @@ namespace PeopleApp.Core.Dto
         {
             CreateMap<Okrug, OkrugDto>().ReverseMap();
             CreateMap<Region, RegionDto>().ReverseMap();
+
+            CreateMap<BirthRate, BirthRateDto>().ReverseMap();
+            CreateMap<DeathRate, DeathRateDto>().ReverseMap();
         }
     }
 }

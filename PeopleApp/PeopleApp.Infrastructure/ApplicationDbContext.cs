@@ -10,6 +10,8 @@ namespace PeopleApp.Infrastructure
 
         public DbSet<Okrug> Okrugs { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<BirthRate> BirthRates { get; set; }
+        public DbSet<DeathRate> DeathRates { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

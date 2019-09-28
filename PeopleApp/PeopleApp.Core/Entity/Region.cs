@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PeopleApp.Core.Entity
 {
@@ -9,5 +10,8 @@ namespace PeopleApp.Core.Entity
 
         public Okrug Okrug { get; set; }
         public Guid OkrugId { get; set; }
+
+        public virtual IList<BirthRate> BirthRates { get; set; }
+        public virtual IList<DeathRate> DeathRates { get; set; }
     }
 }

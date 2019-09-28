@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeopleApp.Core.Dto;
 using PeopleApp.Core.Entity;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 
 namespace PeopleApp.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/common/[controller]")]
     [ApiController]
     public class OkrugController : ControllerBase
     {
@@ -29,7 +30,7 @@ namespace PeopleApp.Web.Controllers
 
         // GET: api/Okrug/1
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(Guid id)
         {
             var okrug = _uow.Okrugs.Get(id);
             return Ok(Mapper.Map<OkrugDto>(okrug));
@@ -45,7 +46,7 @@ namespace PeopleApp.Web.Controllers
 
         // PUT: api/Okrug/Update/1
         [HttpPost("{action}/{id}")]
-        public void Update(int id, [FromBody] OkrugDto okrug)
+        public void Update(Guid id, [FromBody] OkrugDto okrug)
         {
             var t = _uow.Okrugs.Get(id);
             t.Name = okrug.Name;
@@ -54,7 +55,7 @@ namespace PeopleApp.Web.Controllers
 
         // DELETE: api/Okrug/Delete/1
         [HttpPost("{action}/{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _uow.Okrugs.Remove(_uow.Okrugs.Get(id));
             _uow.SaveChanges();

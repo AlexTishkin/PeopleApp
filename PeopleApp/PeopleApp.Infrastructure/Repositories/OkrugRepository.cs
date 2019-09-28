@@ -21,7 +21,7 @@ namespace PeopleApp.Infrastructure.Repositories
                 .ToList();
         }
 
-        public override Okrug Get(int id)
+        public override Okrug Get(Guid id)
         {
             var okrug = _entities.Find(id);
             _appContext.Entry(okrug).Collection(t => t.Regions).Load();

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeopleApp.Core.Dto;
 using PeopleApp.Core.Entity;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PeopleApp.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/common/[controller]")]
     [ApiController]
     public class RegionController : ControllerBase
     {
@@ -20,8 +21,9 @@ namespace PeopleApp.Web.Controllers
         }
 
         // GET: api/Region
-        [Authorize]
-        [Authorize(Roles = "admin")]
+        // Authorization works! Example
+        //[Authorize]
+        //[Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -32,7 +34,7 @@ namespace PeopleApp.Web.Controllers
 
         // GET: api/Region/1
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(Guid id)
         {
             var region = _uow.Regions.Get(id);
             return Ok(Mapper.Map<RegionDto>(region));
@@ -48,7 +50,7 @@ namespace PeopleApp.Web.Controllers
 
         // PUT: api/Region/Update/1
         [HttpPost("{action}/{id}")]
-        public void Update(int id, [FromBody] RegionDto region)
+        public void Update(Guid id, [FromBody] RegionDto region)
         {
             var t = _uow.Regions.Get(id);
             t.Name = region.Name;
@@ -57,7 +59,7 @@ namespace PeopleApp.Web.Controllers
 
         // DELETE: api/Region/Delete/1
         [HttpPost("{action}/{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             _uow.Regions.Remove(_uow.Regions.Get(id));
             _uow.SaveChanges();

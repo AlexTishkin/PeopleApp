@@ -9,6 +9,8 @@ namespace PeopleApp.Infrastructure
 
         private IOkrugRepository _okrugs;
         private IRegionRepository _regions;
+        private IBirthRateRepository _birthRates;
+        private IDeathRateRepository _deathRates;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -30,6 +32,24 @@ namespace PeopleApp.Infrastructure
             {
                 if (_regions == null) _regions = new RegionRepository(_context);
                 return _regions;
+            }
+        }
+
+        public IBirthRateRepository BirthRates
+        {
+            get
+            {
+                if (_birthRates == null) _birthRates = new BirthRateRepository(_context);
+                return _birthRates;
+            }
+        }
+
+        public IDeathRateRepository DeathRates
+        {
+            get
+            {
+                if (_deathRates == null) _deathRates = new DeathRateRepository(_context);
+                return _deathRates;
             }
         }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PeopleApp.Infrastructure;
 
 namespace PeopleApp.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190928022252_BirthRate")]
+    partial class BirthRate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,24 +209,6 @@ namespace PeopleApp.Web.Migrations
                     b.ToTable("BirthRates");
                 });
 
-            modelBuilder.Entity("PeopleApp.Core.Entity.DeathRate", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("RegionId");
-
-                    b.Property<int>("Value");
-
-                    b.Property<int>("Year");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RegionId");
-
-                    b.ToTable("DeathRates");
-                });
-
             modelBuilder.Entity("PeopleApp.Core.Entity.Okrug", b =>
                 {
                     b.Property<Guid>("Id")
@@ -315,14 +299,6 @@ namespace PeopleApp.Web.Migrations
                 {
                     b.HasOne("PeopleApp.Core.Entity.Region")
                         .WithMany("BirthRates")
-                        .HasForeignKey("RegionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PeopleApp.Core.Entity.DeathRate", b =>
-                {
-                    b.HasOne("PeopleApp.Core.Entity.Region")
-                        .WithMany("DeathRates")
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
