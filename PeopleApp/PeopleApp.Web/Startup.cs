@@ -43,7 +43,8 @@ namespace PeopleApp.Web
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials()
-                        .WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString());
+                        .AllowAnyOrigin();
+                    //.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString());
                 });
             });
 
