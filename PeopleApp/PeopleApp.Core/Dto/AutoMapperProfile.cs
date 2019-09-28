@@ -13,6 +13,7 @@ namespace PeopleApp.Core.Dto
             CreateMap<BirthRate, BirthRateDto>().ReverseMap();
             CreateMap<DeathRate, DeathRateDto>().ReverseMap();
             CreateMap<CensusPlace, CensusPlaceDto>().ReverseMap();
+            CreateMap<NewsArticle, NewsArticleDto>().ReverseMap();
         }
     }
 }

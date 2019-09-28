@@ -43,6 +43,7 @@ namespace PeopleApp.Infrastructure
             _context.BirthRates.RemoveRange(_context.BirthRates.ToList());
             _context.DeathRates.RemoveRange(_context.DeathRates.ToList());
             _context.CensusPlaces.RemoveRange(_context.CensusPlaces.ToList());
+            _context.NewsArticles.RemoveRange(_context.NewsArticles.ToList());
             _context.SaveChanges();
         }
 
@@ -65,7 +66,7 @@ namespace PeopleApp.Infrastructure
         {
             if (_context.Okrugs.Any()) return;
 
-            #region Okrugs and Regions
+            #region Округа и Регионы
 
             var r1 = new Region
             {
@@ -101,8 +102,8 @@ namespace PeopleApp.Infrastructure
                 }
             };
 
-            var r3 = new Region {Id = Guid.NewGuid(), Name = "Ленинградская область", Population = 1716868 };
-            var r4 = new Region {Id = Guid.NewGuid(), Name = "Мурманская область", Population = 795409 };
+            var r3 = new Region {Id = Guid.NewGuid(), Name = "Ленинградская область", Population = 1716868};
+            var r4 = new Region {Id = Guid.NewGuid(), Name = "Мурманская область", Population = 795409};
 
             var o1 = new Okrug
             {
@@ -122,13 +123,15 @@ namespace PeopleApp.Infrastructure
 
             #endregion
 
+            #region Места переписи
+
             _context.CensusPlaces.Add(new CensusPlace
             {
                 Id = Guid.NewGuid(),
                 Name = "Менеджмент в Курске",
                 Description = "Пункт переписи населения",
                 Latitude = 51.7567885365751,
-                Longitude =  36.191112367103216
+                Longitude = 36.191112367103216
             });
 
             _context.CensusPlaces.Add(new CensusPlace
@@ -139,6 +142,28 @@ namespace PeopleApp.Infrastructure
                 Latitude = 51.75907951886928,
                 Longitude = 36.191112367103216
             });
+
+            #endregion
+
+            #region Новости
+
+            _context.NewsArticles.Add(new NewsArticle
+            {
+                Id = Guid.NewGuid(),
+                Name = "Новость 1",
+                Text = "Текст новости 1",
+                Date = DateTime.Now
+            });
+
+            _context.NewsArticles.Add(new NewsArticle
+            {
+                Id = Guid.NewGuid(),
+                Name = "Новость 2",
+                Text = "Текст новости 2",
+                Date = DateTime.Now
+            });
+
+            #endregion
 
             _context.SaveChanges();
         }

@@ -13,6 +13,7 @@ namespace PeopleApp.Infrastructure
         public DbSet<BirthRate> BirthRates { get; set; }
         public DbSet<DeathRate> DeathRates { get; set; }
         public DbSet<CensusPlace> CensusPlaces { get; set; }
+        public DbSet<NewsArticle> NewsArticles { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

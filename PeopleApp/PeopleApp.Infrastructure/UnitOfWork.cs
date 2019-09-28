@@ -12,6 +12,7 @@ namespace PeopleApp.Infrastructure
         private IBirthRateRepository _birthRates;
         private IDeathRateRepository _deathRates;
         private ICensusPlaceRepository _censusPlaces;
+        private INewsArticleRepository _newsArticles;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -60,6 +61,15 @@ namespace PeopleApp.Infrastructure
             {
                 if (_censusPlaces == null) _censusPlaces = new CensusPlaceRepository(_context);
                 return _censusPlaces;
+            }
+        }
+
+        public INewsArticleRepository NewsArticles
+        {
+            get
+            {
+                if (_newsArticles == null) _newsArticles = new NewsArticleRepository(_context);
+                return _newsArticles;
             }
         }
 

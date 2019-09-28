@@ -7,6 +7,7 @@
         IBirthRateRepository BirthRates { get; }
         IDeathRateRepository DeathRates { get; }
         ICensusPlaceRepository CensusPlaces { get; }
+        INewsArticleRepository NewsArticles { get; }
         int SaveChanges();
     }
 }
