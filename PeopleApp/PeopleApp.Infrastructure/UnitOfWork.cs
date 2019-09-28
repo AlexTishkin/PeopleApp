@@ -11,6 +11,7 @@ namespace PeopleApp.Infrastructure
         private IRegionRepository _regions;
         private IBirthRateRepository _birthRates;
         private IDeathRateRepository _deathRates;
+        private ICensusPlaceRepository _censusPlaces;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -50,6 +51,15 @@ namespace PeopleApp.Infrastructure
             {
                 if (_deathRates == null) _deathRates = new DeathRateRepository(_context);
                 return _deathRates;
+            }
+        }
+
+        public ICensusPlaceRepository CensusPlaces
+        {
+            get
+            {
+                if (_censusPlaces == null) _censusPlaces = new CensusPlaceRepository(_context);
+                return _censusPlaces;
             }
         }
 

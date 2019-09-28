@@ -6,6 +6,7 @@
         IRegionRepository Regions { get; }
         IBirthRateRepository BirthRates { get; }
         IDeathRateRepository DeathRates { get; }
+        ICensusPlaceRepository CensusPlaces { get; }
         int SaveChanges();
     }
 }

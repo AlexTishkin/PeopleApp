@@ -42,6 +42,7 @@ namespace PeopleApp.Infrastructure
             _context.Regions.RemoveRange(_context.Regions.ToList());
             _context.BirthRates.RemoveRange(_context.BirthRates.ToList());
             _context.DeathRates.RemoveRange(_context.DeathRates.ToList());
+            _context.CensusPlaces.RemoveRange(_context.CensusPlaces.ToList());
             _context.SaveChanges();
         }
 
@@ -63,6 +64,8 @@ namespace PeopleApp.Infrastructure
         private void AddTestData()
         {
             if (_context.Okrugs.Any()) return;
+
+            #region Okrugs and Regions
 
             var r1 = new Region
             {
@@ -116,6 +119,26 @@ namespace PeopleApp.Infrastructure
             };
 
             _context.Okrugs.AddRange(o1, o2);
+
+            #endregion
+
+            _context.CensusPlaces.Add(new CensusPlace
+            {
+                Id = Guid.NewGuid(),
+                Name = "Менеджмент в Курске",
+                Description = "Пункт переписи населения",
+                Latitude = 51.7567885365751,
+                Longitude =  36.191112367103216
+            });
+
+            _context.CensusPlaces.Add(new CensusPlace
+            {
+                Id = Guid.NewGuid(),
+                Name = "Школа 31",
+                Description = "Пункт переписи населения (внутри школы)",
+                Latitude = 51.75907951886928,
+                Longitude = 36.191112367103216
+            });
 
             _context.SaveChanges();
         }
