@@ -19,9 +19,10 @@ namespace PeopleApp.Web.Areas.VKBot.Controllers
         private readonly IVkApi _vkApi;
         private readonly IVKService _vkService;
 
-        public VKBotCallbackController(IVkApi vkApi, IConfiguration configuration)
+        public VKBotCallbackController(IVkApi vkApi, IVKService vkService, IConfiguration configuration)
         {
             _vkApi = vkApi;
+            _vkService = vkService;
             _configuration = configuration;
         }
 
