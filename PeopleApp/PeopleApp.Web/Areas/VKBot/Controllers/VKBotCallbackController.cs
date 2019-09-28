@@ -41,7 +41,7 @@ namespace PeopleApp.Web.Areas.VKBot.Controllers
                     {
                         RandomId = new DateTime().Millisecond,
                         PeerId = msg.PeerId.Value,
-                        Message =  _vkService.GetHandledMessage(msg.Text)
+                        Message =  _vkService.GetHandledMessage(msg.Text?.ToLower())
                     });
                     break;
                 }
