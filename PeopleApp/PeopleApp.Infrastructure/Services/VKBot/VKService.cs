@@ -11,7 +11,7 @@ namespace PeopleApp.Infrastructure.Services.VKBot
                 return "Добрый день! :-)";
             }
 
-            return $"Сам {message}!";
+            return $"Сам1 {message}!";
         }
     }
 }
