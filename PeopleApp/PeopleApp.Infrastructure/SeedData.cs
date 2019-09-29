@@ -128,7 +128,7 @@ namespace PeopleApp.Infrastructure
             _context.CensusPlaces.Add(new CensusPlace
             {
                 Id = Guid.NewGuid(),
-                Name = "Менеджмент в Курске",
+                Name = "Здание менеджмента в Курске",
                 Description = "Пункт переписи населения",
                 Latitude = 51.7567885365751,
                 Longitude = 36.191112367103216
@@ -142,6 +142,13 @@ namespace PeopleApp.Infrastructure
                 Latitude = 51.75907951886928,
                 Longitude = 36.191112367103216
             });
+
+            _context.CensusPlaces.Add(new CensusPlace {Id = Guid.NewGuid(), Name = "ул. Магистральная, д.1", Latitude = 51.63010986731586, Longitude = 36.117730386672015 });
+            _context.CensusPlaces.Add(new CensusPlace {Id = Guid.NewGuid(), Name = "ул. Придорожная, д.7", Latitude = 51.62975244904517, Longitude = 36.11406760286574 });
+            _context.CensusPlaces.Add(new CensusPlace {Id = Guid.NewGuid(), Name = "17-ой Степной пер.", Latitude = 51.64669715186478, Longitude = 36.15535606028583 });
+            _context.CensusPlaces.Add(new CensusPlace {Id = Guid.NewGuid(), Name = "ул. Республиканская, д. 56", Latitude = 51.74118405440213, Longitude = 36.26160817937314 });
+            _context.CensusPlaces.Add(new CensusPlace {Id = Guid.NewGuid(), Name = "1-я Щигровская ул.", Latitude = 51.7528517458482, Longitude = 36.25683920862518 });
+            _context.CensusPlaces.Add(new CensusPlace {Id = Guid.NewGuid(), Name = "ул. Пучкова, 39", Latitude = 51.75656019250004, Longitude = 36.146711082514976 });
 
             #endregion
 

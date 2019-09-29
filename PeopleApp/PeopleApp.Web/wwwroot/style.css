@@ -1,0 +1,447 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 150px;
+    background-image:url("images/fon.jpg");
+    
+    background-color:#B3D9FF;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+body.page-15 {background:none;
+         background-color: #355B81;
+            }
+body.page-16 {background:none;
+         background-color: #A1B6F2;
+            }
+::-webkit-scrollbar-track { 
+background-color:#32312e; 
+box-shadow:0px 0px 5px #000 inset; 
+} 
+
+::-webkit-scrollbar-thumb { 
+background-color:#F8F8FF; 
+box-shadow:0px 1px 1px #fff inset; 
+} 
+::-webkit-scrollbar{ 
+width: 2px; 
+}
+
+@font-face {
+    font-family: Merri;
+    src: url('/fonts/ofont.ru_Raleway.ttf'); 
+}
+@font-face {
+    font-family: ico;
+    src: url('/fonts/icomoon.ttf'); 
+}
+@font-face {
+    font-family: Mer;
+    src: url('/fonts/Merriweather-Regular.ttf'); 
+}
+
+
+a{
+   text-decoration: none;
+   color: inherit;
+   cursor: pointer;
+   
+}
+a:hover{
+    color:#FFB58C;
+}
+
+header{
+    z-index: 6;
+    position: absolute;
+    top:5%;
+    margin: 0 0 0 10px;
+    width: 99%; 
+}
+h1{
+    
+    font-family: Impact;
+    font-size: 60px;
+    opacity: 0.9;
+    color:white;
+}
+h3{
+    /*Logo*/
+    z-index: 3;
+    position: absolute;
+    font-family: Merri;
+    font-size: 15px;
+    margin: 15px;
+    float: left;
+    color: white;
+    letter-spacing:2px;
+}
+#logo {
+    font-size: 24px;
+    margin: 4px 15px;
+}
+nav{
+    z-index: 6;
+    position: relative;
+    float:right;
+    margin: 0 15px;
+    color:white;
+    font-family: Mer;
+    
+}
+nav a{
+    list-style: none;
+    float:left;
+    margin: 10px;
+    font-size: 19px;
+    letter-spacing:2px;
+}
+header  nav a{
+    float:left;
+    cursor: pointer;
+}
+.off{
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 250px;
+}
+.blockfon{
+    z-index: 2;
+    position: relative;
+    height: 200px;
+    width: 8.871%;
+    margin: 0 3px 0 0;
+    background: linear-gradient(180deg, rgb(43, 175, 236), transparent);
+    /* BFEBFF */
+    float: left;
+   
+}
+.one .blockfon{
+    height: 210px;
+}
+.two .blockfon{
+    height: 190px;
+}
+.three .blockfon{
+    height: 220px;
+}
+.line{
+    z-index: 1;
+    position: absolute;
+    top:0;
+    border:solid 0.5px;
+    width: 1px;
+    color:#F8F8FF;
+    opacity: 0.5;
+    height: 100%;
+    margin: 0 19%;
+    float: left;
+}
+.one .line{
+    margin: 0 40%;
+}
+.two .line{
+    margin: 0 70%;
+}
+.three .line{
+    margin: 0 85%;
+}
+.glavnai{
+    z-index: 8;
+    position: relative;
+    top:70%;
+    width: 100%;
+    letter-spacing:1.5px;
+    
+   
+}
+#tooltip {
+        z-index: 99;
+        background-color: rgba(225,225,225,0.8);
+        color: black;
+        font: menu;
+        margin: 10px;
+        padding: 3px 5px;
+        position: absolute;
+        visibility: hidden;
+      }
+.zag{
+    margin: 170px 15px;
+    width: 50%;
+    float:left;
+}
+.zag h1 {
+    font-size: 63px;
+    font-weight: 100;
+}
+.map{
+    z-index: 11;
+    position: absolute;
+    top:25%;
+    right: 0%;
+}
+
+.stoka{
+    top:100%;
+    position: absolute;
+    float: left;
+    width: 100%;
+    background-color:#FFB58C;
+    color: white;
+    
+    font-size: 21px;
+}
+.stoka .blockfon{
+     
+    background: linear-gradient(0deg,transparent,#FFB58C);
+    height: 300px;
+}
+.stoka h1{
+    color:white;
+    font-size: 28px;
+    margin: 0;
+    padding: 12px;
+    opacity: 1;
+    font-stretch:expanded;
+    letter-spacing:1.5px;
+}
+h2{
+    font-family: Impast;
+    margin:25px 10%;
+    
+}
+.onas{
+    z-index: 10;
+    position: absolute;
+    top:120%;
+    float: left;
+    width: 45%;
+    min-height: 300px;
+    margin: 0 4%;
+    padding: 2%;
+    font-size: 18px;
+    background-color:rgba(225,225,225,0.6);
+}
+.yonas{
+    z-index:9;
+    position: absolute;
+    top:130%;
+    left:9%;
+    width: 45%;
+    height: 350px;
+    background-color:rgba(225,225,225,0.5);
+}
+.info{
+    z-index: 6;
+   position: absolute;
+    top:180%;
+    right: 3%;
+    width: 45%;
+    min-height: 300px; 
+    margin: 0 4%;
+    padding: 2%;
+    font-size: 18px;
+    background-color:rgba(0,0,0,0.6);
+    color:white;
+}
+.yinfo{
+    z-index: 5;
+   position: absolute;
+    top:172%;
+    right: 7%;
+    width: 45%;
+    min-height: 350px; 
+    background-color:rgba(0,0,0,0.6);
+}
+p{
+    margin:  0  0 0 50px;
+    width: 85%;
+    line-height: 1.7;
+}
+.in{
+    position: relative;
+    width: 50%;
+    float: right;
+}
+.col{
+    z-index: 1;
+    position: absolute;
+    top:100%;
+    left:-15%;
+    width: 100%;
+    height: 140%;
+}
+
+footer{
+    position: absolute;
+    top:245%;
+    float: left;
+    height: 15%;
+    width: 90%;
+    padding: 0 5%;
+    background-color: #97C1C7;
+    
+}
+.footer .off .blockfon{
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg); 
+    transform: rotate(180deg);
+    background: linear-gradient(0deg,#8B4513,transparent);
+    overflow: hidden
+}
+.left{
+    width: 40%;
+    float:left;
+    
+}
+.left .line{
+        background: linear-gradient(0deg,transparent,#ffffff);
+}
+.panel{
+    position: relative;
+    width: 50%;
+    float:right;
+    text-align: right;
+    margin: 15px 3px 0 3px;
+}
+.isk{
+    z-index: 15;
+    position: absolute;
+    padding: 30px 30px;
+    top: 20%;
+    left: 10%;
+    width: 50%;
+    color: white;
+    font-size: 25px;
+    background-color: rgba(225, 225, 225);
+}
+select{
+    background: none;
+    border:none;
+    font-size:19px;
+    border-bottom: 1px solid white;
+    background: rgba(225,225,225,0.5);
+    margin: 6px 0;
+}
+.spisok{
+    display:block;
+}
+.field {
+    display: inline-block;
+    padding: 12px 12px;
+    font-size: 20px;
+    color: black;
+    background: rgb(186, 200, 247);
+    border-radius: 2px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.field:hover {
+    background-color: rgb(41, 140, 185);
+}
+.stroka{
+    border:none;
+    border-bottom:1px solid white;
+    width: 70%;
+    height: 30px;
+    padding: 3px 12px;
+    font-size: 19px;
+    text-align: left;
+    margin: 5px auto;
+}
+.stroka::placeholder {
+    color: rgb(39, 39, 39);
+}
+
+* {
+  outline: 0 !important;
+}
+
+button[type="submit"]{
+    background-color:rgba(36, 79, 197, 0.5);
+    color:white;
+    margin: 0 5px;
+    font-family: Arial;
+    font-size: 19px;
+    border:none;
+    width: 130px;
+    box-shadow: 5px 5px 0px 0px rgba(255, 255, 255,0.5);
+    padding: 10px 15px;
+    cursor: pointer;
+    outline: none;
+}
+button:hover{
+     box-shadow: -5px -5px 0px 0px rgba(255, 255, 255,0.5);
+     background-color: rgba(26, 58, 145, 0.5);
+}
+
+#chart{
+    z-index: 15;
+    position: absolute;
+    padding: 30px 30px;
+    top: 50%;
+    left: 10%;
+    width: 50%;
+    color: white;
+    font-size: 23px;
+}
+.seti{
+    width: 3%;
+    margin: 45px 0 0 45px;
+}
+
+#oil {
+    width: 500px;
+    height: 400px
+}
+
+.selected {
+    background-color: rgb(41, 140, 185);
+}
+
+/*///////////////////////////////////////////////////////////////*/
+.golova{
+    z-index: 15;
+    position: absolute;
+    top:29%;
+    margin: 15px;
+    width: 100%;
+}
+.golova h1{
+   opacity: 0.9; 
+   margin: 15px 20%;
+   font-size: 56px;
+}
+.golova h2{
+    font-size: 100%;
+    font-family: Mer;
+    font-size: 26px;
+    letter-spacing: 1.5px;
+    margin: 35px 0 30px 45px;
+}
+.white{
+    font-size:25px;
+    width: 45%;
+    text-align: left;
+    line-height: 1.5em;
+    background-color: rgba(225,225,225,0.8);
+    padding: 2%;
+    margin: 15px 3px;
+    float:left;
+    min-height: 550px;
+}
+.golova img{
+    width: 49%;
+    margin: 5px;
+    float: left;
+}
+.golova i{
+    text-align: center;
+    font-size: 25px;
+}
+.plus{
+    width: 70%;
+    margin: 15px auto;
+    color: white;
+}
