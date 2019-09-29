@@ -1,10 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PeopleApp.Infrastructure.Services.VKBot
 {
     public class VKService : IVKService
     {
+        private readonly IUnitOfWork _uow;
+
+        public VKService(IUnitOfWork uow)
+        {
+            _uow = uow;
+        }
+
         public string GetHandledMessage(string message)
         {
             if (HelpHandling(ref message)) return message;
@@ -148,27 +157,69 @@ namespace PeopleApp.Infrastructure.Services.VKBot
 
         private bool StatInfoHandling(ref string message)
         {
-            if (message.Contains("сколько людей") || message.Contains("населений"))
+            var messageText = message;
+
+            if (message.Contains("сколько людей живет")
+                || message.Contains("сколько человек живет")
+                || message.Contains("населений"))
             {
-                // TODO: Стат. инфа с БД
-                message = "100";
+                var maxRegion = GetMismatchRegion(messageText);
+                message = $"{maxRegion?.Name}: население - {maxRegion?.Population} чел.";
                 return true;
             }
 
             if (message.Contains("рождаемость") || message.Contains("родил") || message.Contains("появилось"))
             {
-                // TODO: Стат. инфа с БД
-                message = "1000";
+                var maxRegion = GetMismatchRegion(messageText, true);
+                var year = int.Parse(Regex.Match(messageText, @"\d{4}").Value);
+                message = maxRegion.BirthRates.FirstOrDefault(b => b.Year == year)?.Value.ToString();
+                if (message == null) message = "К сожалению, эта информация отсутствует";
+                else message = $"В {year} году в данной области родилось: {message} чел.";
                 return true;
             }
 
             if (message.Contains("смертность") || message.Contains("погиб") || message.Contains("умер"))
             {
-                // TODO: Стат. инфа с БД
-                message = "5000";
+                var maxRegion = GetMismatchRegion(messageText, true);
+                var year = int.Parse(Regex.Match(messageText, @"\d{4}").Value);
+                message = maxRegion.DeathRates.FirstOrDefault(b => b.Year == year)?.Value.ToString();
+                if (message == null) message = "К сожалению, эта информация отсутствует";
+                else message = $"В {year} году в данной области погибло: {message} чел.";
                 return true;
             }
             return false;
+        }
+
+        private Core.Entity.Region GetMismatchRegion(string messageText, bool eagerMode = false)
+        {
+            messageText = GetShortMessageText(messageText);
+            var regions = _uow.Regions.GetAll(eagerMode).ToList();
+            var max = regions.Max(r => LongestCommonSubstring(messageText, r.Name.ToLower()));
+            var maxRegion = regions.First(r => LongestCommonSubstring(messageText, r.Name.ToLower()) == max);
+            return maxRegion;
+        }
+
+        private static string GetShortMessageText(string messageText)
+        {
+            messageText = messageText
+                .Replace("сколько людей живет", "")
+                .Replace("сколько человек живет", "")
+                .Replace("населений", "")
+                .Replace("област", "")
+                .Replace("автономн", "")
+                .Replace("рождаемость", "")
+                .Replace("сколько", "")
+                .Replace("человек", "")
+                .Replace("погибло", "")
+                .Replace("родил", "")
+                .Replace("появилось", "")
+                .Replace("округ", "")
+                .Replace("кой", "")
+                .Replace("кую", "")
+                .Replace("в ", "")
+                .Replace(" и", "")
+                .Trim();
+            return messageText;
         }
 
         #region Utils
@@ -176,6 +227,42 @@ namespace PeopleApp.Infrastructure.Services.VKBot
         public static string FirstUpper(string str)
         {
             return str.Substring(0, 1).ToUpper() + (str.Length > 1 ? str.Substring(1) : "");
+        }
+
+        /// <summary>
+        /// Наиболее общая подстрока
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static int LongestCommonSubstring(string str1, string str2)
+        {
+            if (String.IsNullOrEmpty(str1) || String.IsNullOrEmpty(str2))
+                return 0;
+
+            List<int[]> num = new List<int[]>();
+            int maxlen = 0;
+            for (int i = 0; i < str1.Length; i++)
+            {
+                num.Add(new int[str2.Length]);
+                for (int j = 0; j < str2.Length; j++)
+                {
+                    if (str1[i] != str2[j])
+                        num[i][j] = 0;
+                    else
+                    {
+                        if ((i == 0) || (j == 0))
+                            num[i][j] = 1;
+                        else
+                            num[i][j] = 1 + num[i - 1][j - 1];
+                        if (num[i][j] > maxlen)
+                            maxlen = num[i][j];
+                    }
+                    if (i >= 2)
+                        num[i - 2] = null;
+                }
+            }
+            return maxlen;
         }
 
         #endregion

@@ -60,7 +60,8 @@ namespace PeopleApp.Infrastructure.Services.Region
                     item["death"] = deathCount;
                 }
 
-                result.Add(item);
+                if (!result.Any(r => r.ContainsValue(year)))
+                    result.Add(item);
             }
 
             return result;
