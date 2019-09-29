@@ -30,10 +30,17 @@ namespace PeopleApp.Infrastructure.Services.VKBot
         private bool HelpHandling(ref string message)
         {
             var messageText = message;
+
+            if (messageText.Contains("кто ты") || messageText.Contains("ты кто"))
+            {
+                message = "Привет, я Скворец! :-) Я призван рассеять все сомнения по поводу бесполезности переписи населения!\n Для получения списка всех моих возможностей пришлите '?'";
+                return true;
+            }
+
             var helpMessages = new[]
             {
                 "как это работает", "что тут делать", "справка", "help",
-                "помоги", "помощь"
+                "помоги", "помощь", "что ты умеешь"
             };
 
             if (helpMessages.Any(m => messageText.Contains(m)) || messageText.Equals("?"))
